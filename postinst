@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+setup_journaldnotify_user() {
+    # Check the return code of $ id rather then any output it produces with []
+    if ! id journald-notify >/dev/null 2>/dev/null; then
+        adduser --quiet --system --no-create-home --home / --shell /usr/sbin/nologin --group journald-notify
+        usermod -aG systemd-journal journald-notify
+    fi
+}
+
+if [ "$1" = configure ]; then
+    setup_journaldnotify_user
+fi
+
+exit 0
