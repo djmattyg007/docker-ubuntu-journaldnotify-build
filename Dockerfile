@@ -1,4 +1,4 @@
-FROM djmattyg007/ubuntu-build:20161010-1
+FROM djmattyg007/ubuntu-build:20170213-1
 MAINTAINER djmattyg007
 
 RUN apt-get -q update && \
